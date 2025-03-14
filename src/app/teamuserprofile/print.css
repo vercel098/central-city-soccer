@@ -1,0 +1,24 @@
+@media print {
+  /* Hide everything except for the printable content */
+  body * {
+    visibility: hidden;
+  }
+
+  .printable, .printable * {
+    visibility: visible;
+  }
+
+  .printable {
+    position: absolute;
+    left: 0;
+    top: 0;
+    background-color: rgb(150, 75, 60); /* Default color fallback */
+        color: white; /* Text color */
+    width: 83mm;  /* Ensure the printed card size is maintained */
+    height: 49mm; /* Ensure the printed card size is maintained */
+  }
+
+  .non-printable {
+    display: none;
+  }
+}
