@@ -231,7 +231,7 @@ export default function PlayerRegistrationForm() {
                   teams.map((team) => (
                     <li
                       key={team._id}
-                      className="flex items-center px-3 py-2 cursor-pointer hover:bg-indigo-100"
+                      className="flex items-center px-3 py-2 cursor-pointer hover:bg-indigo-100 text-[#0E1AC6]"
                       onClick={() => handleTeamSelect(team._id)}
                     >
                       <Image
