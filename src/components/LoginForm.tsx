@@ -51,7 +51,7 @@ export default function LoginForm() {
           {error && <div className="text-red-600 text-sm">{error}</div>}
 
           <div className="w-full">
-            <label htmlFor="playerId" className="block text-sm font-medium text-gray-700">Player ID</label>
+            <label htmlFor="playerId" className="block text-sm font-medium text-[#0E1AC6]">Player ID</label>
             <input
               type="text"
               id="playerId"
@@ -64,7 +64,7 @@ export default function LoginForm() {
           </div>
 
           <div className="w-full">
-            <label htmlFor="password" className="block text-sm font-medium text-gray-700">Password</label>
+            <label htmlFor="password" className="block text-sm font-medium text-[#0E1AC6]">Password</label>
             <input
               type="password"
               id="password"

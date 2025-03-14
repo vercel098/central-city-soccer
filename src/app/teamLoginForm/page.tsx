@@ -63,7 +63,7 @@ export default function TeamLoginForm() {
       <form onSubmit={handleSubmit} className="space-y-4">
         {/* Team Name */}
         <div>
-          <label htmlFor="teamName" className="block text-sm font-medium text-gray-700">Team Name</label>
+          <label htmlFor="teamName" className="block text-sm font-medium text-[#0E1AC6]">Team Name</label>
           <input
             type="text"
             name="teamName"
@@ -77,7 +77,7 @@ export default function TeamLoginForm() {
 
         {/* Password */}
         <div>
-          <label htmlFor="password" className="block text-sm font-medium text-gray-700">Password</label>
+          <label htmlFor="password" className="block text-sm font-medium text-[#0E1AC6]">Password</label>
           <input
             type="password"
             name="password"
