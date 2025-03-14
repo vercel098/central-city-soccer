@@ -8,10 +8,10 @@ export async function POST(req: NextRequest) {
     const playerData = await req.json(); // Parsing the request body
     await dbConnect();
 
-    // Ensure documents field exists
+    // Ensure passport size photo is provided
     const { birthCertificate, passportSizePhoto } = playerData.documents || {};
-    if (!birthCertificate || !passportSizePhoto) {
-      return NextResponse.json({ message: 'Missing required document URLs' }, { status: 400 });
+    if (!passportSizePhoto) {
+      return NextResponse.json({ message: 'Passport size photo is required' }, { status: 400 });
     }
 
     // Check if the team exists
@@ -31,19 +31,20 @@ export async function POST(req: NextRequest) {
     }
 
     // If guardianInfo is provided, include it in the player data
-    const guardianInfo = playerData.guardianName && playerData.guardianContactNumber
-      ? {
-          guardianName: playerData.guardianName,
-          guardianContactNumber: playerData.guardianContactNumber,
-        }
-      : undefined;
+    const guardianInfo =
+      playerData.guardianName && playerData.guardianContactNumber
+        ? {
+            guardianName: playerData.guardianName,
+            guardianContactNumber: playerData.guardianContactNumber,
+          }
+        : undefined;
 
     // Create and save the new player
     const player = new Player({
       ...playerData,
       documents: {
-        birthCertificate,
-        passportSizePhoto,
+        birthCertificate: birthCertificate || '', // Optional (set empty string if not provided)
+        passportSizePhoto, // Required
       },
       guardianInfo, // Ensure guardianInfo is added
     });

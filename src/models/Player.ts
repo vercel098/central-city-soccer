@@ -84,7 +84,7 @@ const PlayerSchema: Schema<IPlayer> = new mongoose.Schema(
     documents: {
       birthCertificate: {
         type: String,  // Store file URL or path
-        required: true
+        required: false
       },
       passportSizePhoto: {
         type: String,  // Store file URL or path

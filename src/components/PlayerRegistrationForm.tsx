@@ -99,7 +99,13 @@ export default function PlayerRegistrationForm() {
 
     try {
       // Upload birth certificate and passport photo to S3
-      const birthCertificateUrl = await uploadToS3(playerData.birthCertificate!);
+      let birthCertificateUrl = "";
+      if (playerData.birthCertificate) { // Upload only if a file is selected
+        birthCertificateUrl = await uploadToS3(playerData.birthCertificate);
+      }
+
+
+
       const passportSizePhotoUrl = await uploadToS3(playerData.passportSizePhoto!);
 
       // Prepare player data with document URLs
@@ -313,13 +319,12 @@ export default function PlayerRegistrationForm() {
         {/* File Upload for Birth Certificate and Passport Size Photo */}
         <div className="space-y-4">
           <div className="w-full">
-            <label htmlFor="birthCertificate" className="block text-sm font-medium text-[#0E1AC6]">Birth Certificate</label>
+            <label htmlFor="birthCertificate" className="block text-sm font-medium text-[#0E1AC6]">Birth Certificate (Optional)</label>
             <input
               type="file"
               name="birthCertificate"
               id="birthCertificate"
               onChange={handleFileChange}
-              required
               className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
             />
           </div>
